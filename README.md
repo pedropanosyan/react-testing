@@ -1,4 +1,60 @@
-# WIP
+# Unit Testing in React
+
+## Testing stack
+
+### [Vitest](https://vitest.dev/)
+
+Test runner.
+
+### [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+
+Library that facilitates testing React component without having to deal with instances of rendered React components, but actual DOM nodes.
+
+### [msw](https://mswjs.io/)
+
+API mocking library for browser and Node.js. It lets you intercept outgoing requests, observe them, and respond to them using mocked responses.
+
+# Project description
+
+There are 3 main routes managed by [React Router](https://reactrouter.com/en/main).
+
+- `Counter`.
+- `Posts`.
+- `Settings`.
+
+`Posts` interacts with a public API, https://jsonplaceholder.typicode.com/posts, to retrieve a list of posts and also posts by id.
+
+Network requests are handled using a combination of [axios](https://axios-http.com/) and [React Query](https://tanstack.com/query/latest/docs/framework/react/overview).
+
+Components are mostly styled out of the box using [shadcn/ui](https://ui.shadcn.com/).
+
+# Running the project
+
+## Install dependencies
+
+```
+npm install
+```
+
+## Running the project
+
+```
+npm dev
+```
+
+## Running tests
+
+```
+npm test
+```
+
+You can use these commands as well:
+
+- `npm test Counter` -> runs test for `Counter` component, by default in `watch` mode. You can provide the exact path or just a string that matches with the file that you want to test.
+- `npm test Counter -- --coverage` -> runs test for `Counter` component in `watch` mode and also provides coverage metrics. 
+- `npm coverage` -> runs all the tests within the project in `watch` mode and provides coverage metrics.
+
+# Tasks
 
 ## Task #1: test the usePost hook
 
@@ -18,10 +74,14 @@
 
 ## Task #3: add test cases to cover client-side validation errors on the AccountTab component
 
+You can remove the default values if needed (name `Cianca` and username `dinos1337`).
+Also feel free to change one of the inputs to be of another type, such as `email`, or to add any other inputs and validators.
+
 **Acceptance criteria**
 
-A single test case for both inputs is fine since the validators are the same.
-Take into account that validation errors will appear after you submit.
+1) Use `fireEvent` or `userEvent` to fill input values.
+
+Take into account that validation errors will appear once you submit AND form validation happens asynchronously.
 
 ## Task #4: add form validation to PasswordTab component and test it
 
@@ -32,9 +92,9 @@ Take into account that validation errors will appear after you submit.
 - `New password` can't be equal to `Current password`.
 - `New password` must match the `Repeat new password`.
 
-You can follow a similar approach as in the AccountTab component.
+To build the form and the validation schema, you can follow a similar approach as in the AccountTab component.
 
-2) When the form has no errors and is submitted, add a toast with:
+2) When the form has no errors and is submitted, show a toast with:
 
 - Title: `Success`.
 - Text: `Password changed`.
