@@ -30,10 +30,4 @@ describe('AccountTab', () => {
 			})
 		})
 	})
-
-	// TODO
-	test.todo('should display error state when name is invalid', () => {})
-
-	// TODO
-	test.todo('should display error state when username is invalid', () => {})
 })

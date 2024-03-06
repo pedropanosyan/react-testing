@@ -29,6 +29,10 @@ export const PasswordTab = () => {
 					<Label htmlFor="new">New password</Label>
 					<Input id="new" type="password" />
 				</div>
+				<div className="space-y-1">
+					<Label htmlFor="new-repeated">Repeat new password</Label>
+					<Input id="new-repeated" type="password" />
+				</div>
 			</CardContent>
 			<CardFooter>
 				<Button>Save password</Button>

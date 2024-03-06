@@ -20,7 +20,6 @@ export const Counter = ({ initialValue, ...props }) => {
         value={count}
       />
       <div className='flex items-center justify-between w-full'>
-        a
         <Button onClick={decrement}>-</Button>
         <Button onClick={reset}>Reset</Button>
         <Button onClick={increment}>+</Button>
