@@ -28,6 +28,8 @@ Network requests are handled using a combination of [axios](https://axios-http.c
 
 Components are mostly styled out of the box using [shadcn/ui](https://ui.shadcn.com/).
 
+The `test` directory contains some utilities and configuration, including a `setup.js` file which is referenced in `vitest.config.js`.
+
 # Running the project
 
 ## Install dependencies
