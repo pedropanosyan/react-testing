@@ -1,5 +1,7 @@
 # Unit Testing in React
 
+[Presentation](https://docs.google.com/presentation/d/1PVxCDH-a2mXHBN3-cwcKb2b3Di2nOSu9mpJ9GPahMMA/edit?usp=sharing)
+
 ## Testing stack
 
 ### [Vitest](https://vitest.dev/)
