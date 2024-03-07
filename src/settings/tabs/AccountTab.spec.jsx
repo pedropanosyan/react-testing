@@ -4,7 +4,11 @@ import { describe, expect, test, vi } from 'vitest'
 import { AccountTab } from './AccountTab'
 
 // Task 3: finish tests for AccountTab.
-// Acceptance criteria: include tests that cover the client-side validation errors on both inputs.
+// You can remove the default values if needed (name Cianca and username dinos1337).
+// Also feel free to change one of the inputs to be of another type, such as email, or to add any other inputs and validators.
+// Acceptance criteria:
+// 1) Use fireEvent or userEvent to fill input values.
+// Take into account that validation errors will appear once you submit AND form validation happens asynchronously.
 
 describe('AccountTab', () => {
 	test('should match snapshot', () => {
