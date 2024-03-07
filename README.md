@@ -104,3 +104,10 @@ To build the form and the validation schema, you can follow a similar approach a
 - Text: `Password changed`.
 
 3) Add tests aiming to cover all the functionality.
+
+## Delivery terms
+
+To complete the tasks, go ahead and fork this repository.
+After finishing them, you should share the repository to @nicolasulmete on GitLab or @nulmete on GitHub.
+Don't forget to send a message to him on Slack after finishing!
+Good luck!
