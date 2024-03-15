@@ -34,4 +34,36 @@ describe('AccountTab', () => {
 			})
 		})
 	})
+
+	test('should show validation errors for minimum length at name input', async () => {
+		render(<AccountTab />);
+
+		// Fill input values
+		fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'J' } });
+		fireEvent.change(screen.getByLabelText('Username'), { target: { value: 'john123' } });
+
+		// Submit the form
+		fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+
+		// Wait for asynchronous validation
+		await waitFor(() => {
+			expect(screen.getByText('String must contain at least 2 character(s)')).toBeInTheDocument();
+		});
+	});
+
+	test('should show validation errors for maximum length at name input', async () => {
+		render(<AccountTab />);
+
+		// Fill input values
+		fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'J'.repeat(51)} });
+		fireEvent.change(screen.getByLabelText('Username'), { target: { value: 'john'}});
+
+		// Submit the form
+		fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+
+		// Wait for asynchronous validation
+		await waitFor(() => {
+			expect(screen.getByText('String must contain at most 50 character(s)')).toBeInTheDocument();
+		});
+	});
 })

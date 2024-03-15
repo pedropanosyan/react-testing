@@ -1,4 +1,3 @@
-import React from 'react'
 import { describe, expect, test } from 'vitest'
 import { createReactQueryWrapper, renderHook, server, waitFor } from '@/test'
 import { usePosts } from './usePosts'

@@ -13,7 +13,48 @@
 // - Text: `Password changed`.
 
 // 3) Add tests aiming to cover all the functionality.
+import React from 'react'
+import {PasswordTab} from "./PasswordTab.jsx";
+import { render, screen, fireEvent } from '@/test'
+import {describe, expect, test, vi} from 'vitest'
+import {waitFor} from "@testing-library/react";
 
-import { describe } from 'vitest';
+describe('PasswordTab', () => {
 
-describe.skip('PasswordTab', () => {})
+    test('submit form with valid data', async () => {
+        render(<PasswordTab />);
+
+        fireEvent.change(screen.getByPlaceholderText('Current'), { target: { value: 'currentPassword' } });
+        fireEvent.change(screen.getByPlaceholderText('New'), { target: { value: 'newPassword' } });
+        fireEvent.change(screen.getByPlaceholderText('Repeat new'), { target: { value: 'newPassword' } });
+
+        fireEvent.click(screen.getByText('Submit'));
+        await waitFor(() => {
+            expect(screen.getByText('Password changed')).toBeInTheDocument();
+        });
+    });
+
+    test('does not pass validation if new passwords do not match', async () => {
+        render(<PasswordTab />);
+
+        fireEvent.change(screen.getByPlaceholderText('Current'), { target: { value: 'currentPassword' } });
+        fireEvent.change(screen.getByPlaceholderText('New'), { target: { value: 'newPassword' } });
+        fireEvent.change(screen.getByPlaceholderText('Repeat new'), { target: { value: 'differentPassword' } });
+
+        fireEvent.click(screen.getByText('Submit'));
+
+        await expect(screen.queryByText('Password changed')).toBeNull();
+    });
+
+    test('does not pass validation if current password matches new password', async () => {
+        render(<PasswordTab />);
+
+        fireEvent.change(screen.getByPlaceholderText('Current'), { target: { value: 'currentPassword' } });
+        fireEvent.change(screen.getByPlaceholderText('New'), { target: { value: 'currentPassword' } });
+        fireEvent.change(screen.getByPlaceholderText('Repeat new'), { target: { value: 'currentPassword' } });
+
+        fireEvent.click(screen.getByText('Submit'));
+
+        expect(screen.queryByText('Password changed')).toBeNull();
+    });
+})

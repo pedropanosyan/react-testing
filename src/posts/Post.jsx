@@ -30,7 +30,7 @@ export const Post = () => {
 				</Link>
 
 				<Button variant='outline' size='icon' className='ml-12 cursor-pointer'>
-					<Share2Icon onClick={handleCopy} />
+					<Share2Icon id={"share-icon"} onClick={handleCopy} />
 				</Button>
 			</div>
 			<div>
